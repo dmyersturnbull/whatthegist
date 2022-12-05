@@ -5,16 +5,16 @@ IFS=$'\n\t'
 
 usage_str = "Usage: $0 <certificate-file>"
 if (( $# == 1 )) && [[ "$1" = "--help" ]]; then
-	echo "Adds a certificate to the system keychain"
-	echo "Adds it as a trusted root and with 'basic' and 'ssl'"
-	echo "Mac OS only"
-	echo "${usage_str}"
-	exit 0
+  echo "Adds a certificate to the system keychain"
+  echo "Adds it as a trusted root and with 'basic' and 'ssl'"
+  echo "Mac OS only"
+  echo "${usage_str}"
+  exit 0
 fi
 
 if (( $# != 1 )); then
-	(>&2 echo "${usage_str}")
-	exit 1
+  (>&2 echo "${usage_str}")
+  exit 1
 fi
 
 

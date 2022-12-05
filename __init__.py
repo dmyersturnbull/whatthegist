@@ -1,0 +1,3 @@
+"""
+Nothing-file for WhatTheGist.
+"""

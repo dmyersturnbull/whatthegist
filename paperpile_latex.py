@@ -13,27 +13,27 @@ Converts parenthetical citations formatted by paperpile-locator.csl.xml to autoc
 Takes a text file with parenthetical citations formatted by paperpile-locator.csl.xml and a BibTeX file with supported identifiers,
 and outputs (to stdout) the new text file with each {}-like citation to a LaTeX-compatible \autocite call using the labels from the Bibtex file.
 The supported labels are global identifiers pointing to your specific article/book/website, minus page/section numbers. They are:
-	- DOI
-	- ISBN
-	- PubMed ID
-	- PubMed Central ID
-	- URL
+    - DOI
+    - ISBN
+    - PubMed ID
+    - PubMed Central ID
+    - URL
 Every entry in your BibTeX file must have at least one of these.
 This works by formatting parenthetical citations as strings of the supported identifiers surrounded by {}, which are linked to your BibTeX file.
 For example, this line:
-	> Toxicology {3^doi:'10.1016/j.neuro.2008.09.011`^pmid:'18952124`^url:'http://dx.doi.org/10.1016/j.neuro.2008.09.011`} {4^doi:'10.1016/j.bbr.2011.11.020`^pmid:'22138507`^url:'http://dx.doi.org/10.1016/j.bbr.2011.11.020`} and more.
+    > Toxicology {3^doi:'10.1016/j.neuro.2008.09.011`^pmid:'18952124`^url:'http://dx.doi.org/10.1016/j.neuro.2008.09.011`} {4^doi:'10.1016/j.bbr.2011.11.020`^pmid:'22138507`^url:'http://dx.doi.org/10.1016/j.bbr.2011.11.020`} and more.
 Gets converted into:
-	> Toxicology \autocite{MacPhail2009-dg,Ali2012-ts} and more.
+    > Toxicology \autocite{MacPhail2009-dg,Ali2012-ts} and more.
 I used this to help convert my Paperpile-connected Google Doc to a LaTeX file. Here are the steps:
-	1. In the Google Doc, navigate to `Paperpile→View all references` and add at least a DOI, ISBN, PubMed ID, PubMed Central ID, or URL to each (more is safer).
-	1. Upload `paperpile-locator.csl.xml` (in this repository) under your Paperpile "Citation styles" settings.
-	2. In your Google Doc, change your formatting style to paperpile-locator.csl.xml (search for it).
-	3. Choose "format citations" in the Paperpile menu (and wait for it to finish).
-	4. Export the bibliography to a BibTeX file.
-	5. Export your paper as a text file. (Note: I found this easier than converting to Word or HTML and using Pandoc. Pandoc balked on my files.)
-	6. Run `paperpile-latex.py <path-to-text-file> <path-to-bibtex-file> --fixes`. (`--fixes` is optional, but I found it useful.)
-	7. Check for any errors in the terminal.
-	8. Copy the text outputted to `<path-to-text-file>.ppiled.tex` to the document section of your LaTeX template. You’ll want to remove the bibliography at the end.
+    1. In the Google Doc, navigate to `Paperpile→View all references` and add at least a DOI, ISBN, PubMed ID, PubMed Central ID, or URL to each (more is safer).
+    1. Upload `paperpile-locator.csl.xml` (in this repository) under your Paperpile "Citation styles" settings.
+    2. In your Google Doc, change your formatting style to paperpile-locator.csl.xml (search for it).
+    3. Choose "format citations" in the Paperpile menu (and wait for it to finish).
+    4. Export the bibliography to a BibTeX file.
+    5. Export your paper as a text file. (Note: I found this easier than converting to Word or HTML and using Pandoc. Pandoc balked on my files.)
+    6. Run `paperpile-latex.py <path-to-text-file> <path-to-bibtex-file> --fixes`. (`--fixes` is optional, but I found it useful.)
+    7. Check for any errors in the terminal.
+    8. Copy the text outputted to `<path-to-text-file>.ppiled.tex` to the document section of your LaTeX template. You’ll want to remove the bibliography at the end.
 Note that this has not been extensively tested. You should check your output LaTeX file.
 """
     TERMS = ["pmid", "pmcid", "doi", "isbn", "url"]
